@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# SkyCode - Application Météo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Application de météo moderne et élégante construite avec React, Redux et Tailwind CSS.
 
-## Available Scripts
+## 🌟 Fonctionnalités
 
-In the project directory, you can run:
+- **Recherche de Ville** : Recherchez n'importe quelle ville dans le monde pour obtenir les conditions météorologiques actuelles.
+- **Détails Complets** : Accédez à une vue détaillée comprenant la température ressentie, l'humidité, la vitesse du vent, la pression, la visibilité, et les heures de lever/coucher du soleil.
+- **Favoris** : Ajoutez vos villes préférées à une liste de favoris pour un accès rapide.
+- **Navigation Fluide** : Système de routage intuitif pour naviguer entre l'accueil et les détails des villes.
+- **Design Moderne** : Interface utilisateur soignée avec un effet "Glassmorphism" et des animations dynamiques.
 
-### `npm start`
+## 🛠️ Technologies Utilisées
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **[React](https://reactjs.org/)** : Bibliothèque JavaScript pour l'interface utilisateur.
+- **[Redux Toolkit](https://redux-toolkit.js.org/)** : Gestion d'état globale de l'application.
+- **[React Router](https://reactrouter.com/)** : Gestion de la navigation et des routes.
+- **[Tailwind CSS](https://tailwindcss.com/)** : Framework CSS utilitaire pour le stylisme rapide et responsive.
+- **[OpenWeatherMap API](https://openweathermap.org/api)** : Source de données météorologiques.
+- **Axios** : Client HTTP pour les requêtes API.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Installation et Lancement
 
-### `npm test`
+1.  **Cloner le projet**
+    ```bash
+    git clone https://github.com/Anasselghalbzouri/AnassMeteo.git
+    cd meteo
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2.  **Installer les dépendances**
+    ```bash
+    npm install
+    ```
 
-### `npm run build`
+3.  **Lancer l'application**
+    ```bash
+    npm start
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    L'application sera accessible à l'adresse [http://localhost:3000](http://localhost:3000).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📂 Structure du Projet
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `src/components` : Composants Réutilisables (Cartes météo, Navigation, etc.).
+- `src/store` : Configuration Redux et Slices.
+- `src/api` : Gestion des appels API.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Développé avec ❤️ par Anass El Ghalbzouri.
