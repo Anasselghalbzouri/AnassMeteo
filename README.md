@@ -2,6 +2,10 @@
 
 Application de météo moderne et élégante construite avec React, Redux et Tailwind CSS.
 
+## 📸 Capture d'écran
+
+![Aperçu de l'application](screenshot.png)
+
 ## 🌟 Fonctionnalités
 
 - **Recherche de Ville** : Recherchez n'importe quelle ville dans le monde pour obtenir les conditions météorologiques actuelles.
