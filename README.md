@@ -45,6 +45,4 @@ Application de météo moderne et élégante construite avec React, Redux et Tai
 - `src/store` : Configuration Redux et Slices.
 - `src/api` : Gestion des appels API.
 
----
-
-Développé avec ❤️ par Anass El Ghalbzouri.
+Anass El Ghalbzouri.
