@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setVille } from "../slice";
+import { logout } from "../store/authSlice";
 import { useNavigate, Link } from "react-router-dom";
 
 function TopNav() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [ville, setVillee] = useState("");
   const [inputVille, setInput] = useState("");
 
   function handleClick() {
     setInput("");
-    setVillee(inputVille);
     dispatch(setVille(inputVille));
     if (inputVille.trim()) {
         navigate(`/details/${inputVille}`);
@@ -56,7 +55,17 @@ function TopNav() {
           />
         </div>
 
-        <div className='flex gap-3'></div>
+        <div className='flex gap-3'>
+          <button
+            onClick={() => {
+              dispatch(logout());
+              navigate("/login");
+            }}
+            className='text-sm font-medium text-white/60 hover:text-white transition-colors'
+          >
+            Logout
+          </button>
+        </div>
       </div>
     </header>
   );
