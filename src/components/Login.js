@@ -70,7 +70,7 @@ const Login = () => {
           </button>
         </form>
         <p className="text-center text-sm text-gray-400">
-           Use <strong>anassreda88@gmail.com</strong> and <strong>12345678</strong>
+           Use <strong>user@example.com</strong> and <strong>password</strong>
         </p>
       </div>
     </div>

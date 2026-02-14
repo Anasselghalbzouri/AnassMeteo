@@ -4,7 +4,7 @@
 export const login = async (email, password) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            if (email === "anassreda88@gmail.com" && password === "12345678") {
+            if (email === "user@example.com" && password === "password") {
                 const token = "mock-jwt-token-1234567890";
                 const user = { email, name: "Test User" };
                 resolve({ token, user });
