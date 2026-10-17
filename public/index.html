@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Weather Dashboard</title>
-
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <meta content="#101622" name="theme-color" />
+    <meta content="SkyCode — a modern weather dashboard." name="description" />
+    <title>SkyCode · Weather Dashboard</title>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@400;500&display=swap"
@@ -15,50 +15,6 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
       rel="stylesheet"
     />
-
-    <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              primary: "#135bec",
-              "background-light": "#f6f6f8",
-              "background-dark": "#101622",
-            },
-            fontFamily: {
-              display: ["Space Grotesk"],
-            },
-            borderRadius: {
-              DEFAULT: "0.25rem",
-              lg: "0.5rem",
-              xl: "0.75rem",
-              full: "9999px",
-            },
-          },
-        },
-      };
-    </script>
-
-    <style>
-      .glass {
-        background: rgba(40, 46, 57, 0.4);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      .code-bg {
-        background-image: linear-gradient(
-            rgba(16, 22, 34, 0.8),
-            rgba(16, 22, 34, 0.8)
-          ),
-          url(https://lh3.googleusercontent.com/aida-public/AB6AXuAIqgR41x7elfs0bPReYknzkqSELOTsK4fDxSC0O3WN4DyD1PuTFjeJKPsWis1hSn62Iv5kWcwK6N8OJ3COilQzxoxgik06UoOTBbFaxPiUjk7D9k9LwNw1NwLzzMqieToLibs10Z2Ou3Nl1cJZzw7ff1ta35pzAIFVa32_rg98F6A_xTFInxco3HGzWViiQqS7v9ULGaid1u2tf19GqfIFuj-weQmmbIhHvprudrqQTE8iuA-BUBA6QqIybaQBSThwjDTzraurgNeQ);
-        background-size: cover;
-        background-position: center;
-      }
-      .glow-blue {
-        filter: drop-shadow(0 0 8px rgba(19, 91, 236, 0.6));
-      }
-    </style>
   </head>
   <body
     class="bg-background-light dark:bg-background-dark font-display text-white min-h-screen selection:bg-primary selection:text-white"

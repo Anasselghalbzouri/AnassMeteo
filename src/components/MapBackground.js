@@ -4,10 +4,7 @@ function MapBackground() {
   return (
     <div className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[400px] pointer-events-none opacity-20">
       <div className="w-full h-full glass rounded-full blur-[100px] bg-primary/20"></div>
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        data-location="Paris"
-      >
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <svg
           className="text-white/10"
           fill="none"

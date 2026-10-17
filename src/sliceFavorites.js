@@ -15,12 +15,18 @@ const favoritesSlice = createSlice({
   reducers: {
     addFavorite(state, action) {
       const city = action.payload?.trim();
-      if (city && !state.cities.includes(city)) {
+      if (
+        city &&
+        !state.cities.some((c) => c.toLowerCase() === city.toLowerCase())
+      ) {
         state.cities.push(city);
       }
     },
     removeFavorite(state, action) {
-      state.cities = state.cities.filter((c) => c !== action.payload);
+      const target = action.payload;
+      state.cities = state.cities.filter(
+        (c) => c.toLowerCase() !== target.toLowerCase()
+      );
     },
   },
 });

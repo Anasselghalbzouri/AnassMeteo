@@ -10,32 +10,39 @@ function TopNav() {
   const [inputVille, setInput] = useState("");
 
   function handleClick() {
+    const city = inputVille.trim();
     setInput("");
-    dispatch(setVille(inputVille));
-    if (inputVille.trim()) {
-        navigate(`/details/${inputVille}`);
+    if (city) {
+      dispatch(setVille(city));
+      navigate(`/details/${encodeURIComponent(city)}`);
     }
   }
+
   return (
-    <header className='flex items-center justify-between px-12 py-6 z-10'>
-      <div className='flex items-center gap-8'>
-        <Link to="/" className='flex items-center gap-3 hover:opacity-80 transition-opacity'>
-          <h2 className='text-white text-xl font-bold tracking-tight'>
+    <header className="flex items-center justify-between px-6 md:px-12 py-6 z-10 gap-4">
+      <div className="flex items-center gap-8">
+        <Link
+          to="/"
+          className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+        >
+          <h2 className="text-white text-xl font-bold tracking-tight">
             SkyCode
           </h2>
         </Link>
-        <Link to="/" className='text-sm font-medium text-white/60 hover:text-white transition-colors'>
-            Home
+        <Link
+          to="/"
+          className="text-sm font-medium text-white/60 hover:text-white transition-colors"
+        >
+          Home
         </Link>
       </div>
 
-      <div className='flex items-center gap-6'>
-        <div className='relative glass rounded-lg px-3 py-1.5 flex items-center gap-3 w-64 border-white/5'>
+      <div className="flex items-center gap-6">
+        <div className="relative glass rounded-lg px-3 py-1.5 flex items-center gap-3 w-40 sm:w-64 border-white/5">
           <button
-            onClick={() => {
-              handleClick();
-            }}
-            className='material-symbols-outlined text-white/40 text-lg'
+            onClick={handleClick}
+            aria-label="Search city"
+            className="material-symbols-outlined text-white/40 text-lg"
           >
             search
           </button>
@@ -49,19 +56,19 @@ function TopNav() {
                 handleClick();
               }
             }}
-            className='bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-white/30 p-0'
-            placeholder='Search cities...'
-            type='text'
+            className="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-white/30 p-0"
+            placeholder="Search cities..."
+            type="text"
           />
         </div>
 
-        <div className='flex gap-3'>
+        <div className="flex gap-3">
           <button
             onClick={() => {
               dispatch(logout());
               navigate("/login");
             }}
-            className='text-sm font-medium text-white/60 hover:text-white transition-colors'
+            className="text-sm font-medium text-white/60 hover:text-white transition-colors"
           >
             Logout
           </button>

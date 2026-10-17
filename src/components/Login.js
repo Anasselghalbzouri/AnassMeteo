@@ -33,7 +33,7 @@ const Login = () => {
     <div className="flex h-screen w-full items-center justify-center bg-gray-900 text-white">
       <div className="w-full max-w-md p-8 space-y-8 bg-gray-800 rounded-lg shadow-lg">
         <h2 className="text-3xl font-bold text-center">Login</h2>
-        {error && <p className="text-red-500 text-center">{error}</p>}
+        {error && <p role="alert" className="text-red-500 text-center">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-sm font-medium mb-2" htmlFor="email">

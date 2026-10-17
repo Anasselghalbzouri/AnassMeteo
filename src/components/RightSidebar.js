@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite } from "../sliceFavorites";
+import { hasCity } from "../utils/format";
 import FavoriteCityCard from "./FavoriteCityCard";
 
 const STORAGE_KEY = "favoriteCities";
@@ -21,24 +22,26 @@ function RightSidebar() {
   }
 
   return (
-    <aside className='w-80 flex flex-col gap-6'>
-      <div className='glass flex-1 rounded-2xl p-6 flex flex-col border-white/5'>
-        <div className='flex items-center justify-between mb-8'>
-          <h3 className='text-white font-semibold text-lg'>Favorite Cities</h3>
+    <aside className="w-full lg:w-80 flex flex-col gap-6">
+      <div className="glass flex-1 rounded-2xl p-6 flex flex-col border-white/5">
+        <div className="flex items-center justify-between mb-8">
+          <h3 className="text-white font-semibold text-lg">Favorite Cities</h3>
         </div>
 
-        <div className='flex flex-col gap-4'>
+        <div className="flex flex-col gap-4">
           {favorites.map((city) => (
             <FavoriteCityCard key={city} city={city} />
           ))}
 
           <button
             onClick={handleAddCity}
-            disabled={!currentCity || favorites.includes(currentCity)}
-            className='flex items-center justify-center gap-2 border-2 border-dashed border-white/10 rounded-xl p-6 text-white/40 hover:text-white hover:border-white/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed'
+            disabled={!currentCity || hasCity(favorites, currentCity)}
+            className="flex items-center justify-center gap-2 border-2 border-dashed border-white/10 rounded-xl p-6 text-white/40 hover:text-white hover:border-white/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <span className='material-symbols-outlined'>add</span>
-            <span className='text-sm font-medium'>Add City</span>
+            <span className="material-symbols-outlined" aria-hidden="true">
+              add
+            </span>
+            <span className="text-sm font-medium">Add City</span>
           </button>
         </div>
       </div>

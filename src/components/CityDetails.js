@@ -1,18 +1,19 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import WetherApi from "../api/apiwheter";
+import { useDispatch, useSelector } from "react-redux";
+import { useWeather } from "../hooks/useWeather";
+import { addFavorite, removeFavorite } from "../sliceFavorites";
 import DetailCard from "./DetailCard";
-
-function capitalizeCity(str) {
-  if (!str) return "";
-  return str.trim().split(" ").map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ");
-}
+import { capitalizeCity, formatCityTime, kmhFromMps, hasCity } from "../utils/format";
 
 function CityDetails() {
   const { cityName } = useParams();
   const navigate = useNavigate();
-  const { weather } = WetherApi(cityName);
+  const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.favorites?.cities ?? []);
+  const { data: weather, loading, error } = useWeather(cityName);
 
+  const isFavorite = hasCity(favorites, cityName);
   const temp = weather?.main?.temp;
   const tempMin = weather?.main?.temp_min;
   const tempMax = weather?.main?.temp_max;
@@ -20,46 +21,125 @@ function CityDetails() {
   const apiCity = weather?.name;
   const countryCode = weather?.sys?.country;
   const locationLabel = capitalizeCity(apiCity || cityName);
+  const windKmh = kmhFromMps(weather?.wind?.speed);
 
   return (
-    <div className='flex flex-col flex-1 justify-between py-12 px-12'>
-      <button 
-        onClick={() => navigate("/")}
-        className="flex items-center gap-2 text-white/60 hover:text-white mb-6 w-fit transition-colors"
-      >
-        <span className="material-symbols-outlined">arrow_back</span>
-        Back to Home
-      </button>
-
+    <div className="flex flex-col flex-1 justify-between py-6 md:py-12">
       <div>
-        <h1 className='text-white tracking-light text-[64px] font-bold leading-none mb-2'>
-          {locationLabel}{countryCode ? `, ${countryCode.toUpperCase()}` : ""}
+        <div className="flex items-center justify-between mb-6 gap-4">
+          <button
+            onClick={() => navigate("/")}
+            className="flex items-center gap-2 text-white/60 hover:text-white w-fit transition-colors"
+          >
+            <span className="material-symbols-outlined" aria-hidden="true">
+              arrow_back
+            </span>
+            Back to Home
+          </button>
+          <button
+            onClick={() =>
+              dispatch(isFavorite ? removeFavorite(cityName) : addFavorite(cityName))
+            }
+            aria-pressed={isFavorite}
+            className="glass rounded-xl px-4 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all"
+          >
+            <span
+              className="material-symbols-outlined text-lg align-middle mr-2"
+              aria-hidden="true"
+            >
+              star
+            </span>
+            {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+          </button>
+        </div>
+
+        <h1 className="text-white tracking-light text-4xl md:text-[64px] font-bold leading-none mb-2">
+          {locationLabel}
+          {countryCode ? `, ${countryCode.toUpperCase()}` : ""}
         </h1>
 
-        <div className='flex items-baseline gap-4'>
-          <h1 className='text-white tracking-tighter text-[120px] font-thin leading-none'>
-            {temp != null ? `${Math.round(temp)}°C` : "—°C"}
+        <div className="flex items-baseline gap-4">
+          <h1 className="text-white tracking-tighter text-[76px] md:text-[120px] font-thin leading-none">
+            {loading && temp == null
+              ? "…"
+              : temp != null
+              ? `${Math.round(temp)}°C`
+              : "—°C"}
           </h1>
-          <div className='flex flex-col'>
-            <span className='text-white/60 text-xl capitalize'>
+          <div className="flex flex-col">
+            {loading && !description && (
+              <span className="text-white/40 text-lg">Loading…</span>
+            )}
+            <span className="text-white/60 text-xl capitalize">
               {description || "—"}
             </span>
-            <span className='text-white/40 text-lg'>
-              H:{tempMax != null ? Math.round(tempMax) : "—"}° L:{tempMin != null ? Math.round(tempMin) : "—"}°
+            <span className="text-white/40 text-lg">
+              H:{tempMax != null ? Math.round(tempMax) : "—"}° L:
+              {tempMin != null ? Math.round(tempMin) : "—"}°
             </span>
           </div>
         </div>
+
+        {error && (
+          <p role="alert" className="mt-4 text-red-400 text-sm font-medium">
+            {error}
+          </p>
+        )}
       </div>
 
-      <div className='grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 w-full'>
-        <DetailCard icon="thermostat" label="Feels Like" value={weather?.main?.feels_like ? `${Math.round(weather.main.feels_like)}°` : "—"} />
-        <DetailCard icon="water_drop" label="Humidity" value={weather?.main?.humidity ? `${weather.main.humidity}%` : "—"} />
-        <DetailCard icon="air" label="Wind" value={weather?.wind?.speed ? `${Math.round(weather.wind.speed * 3.6)} km/h` : "—"} />
-        <DetailCard icon="compress" label="Pressure" value={weather?.main?.pressure ? `${weather.main.pressure} hPa` : "—"} />
-        <DetailCard icon="visibility" label="Visibility" value={weather?.visibility ? `${(weather.visibility / 1000).toFixed(1)} km` : "—"} />
-        <DetailCard icon="wb_twilight" label="Sunrise" value={weather?.sys?.sunrise ? new Date(weather.sys.sunrise * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : "—"} />
-        <DetailCard icon="wb_twilight" label="Sunset" value={weather?.sys?.sunset ? new Date(weather.sys.sunset * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : "—"} />
-        <DetailCard icon="cloud" label="Cloudiness" value={weather?.clouds?.all ? `${weather.clouds.all}%` : "—"} />
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 w-full">
+        <DetailCard
+          icon="thermostat"
+          label="Feels Like"
+          value={
+            weather?.main?.feels_like != null
+              ? `${Math.round(weather.main.feels_like)}°`
+              : "—"
+          }
+        />
+        <DetailCard
+          icon="water_drop"
+          label="Humidity"
+          value={
+            weather?.main?.humidity != null ? `${weather.main.humidity}%` : "—"
+          }
+        />
+        <DetailCard
+          icon="air"
+          label="Wind"
+          value={windKmh != null ? `${windKmh} km/h` : "—"}
+        />
+        <DetailCard
+          icon="compress"
+          label="Pressure"
+          value={
+            weather?.main?.pressure != null ? `${weather.main.pressure} hPa` : "—"
+          }
+        />
+        <DetailCard
+          icon="visibility"
+          label="Visibility"
+          value={
+            weather?.visibility != null
+              ? `${(weather.visibility / 1000).toFixed(1)} km`
+              : "—"
+          }
+        />
+        <DetailCard
+          icon="wb_twilight"
+          label="Sunrise"
+          value={formatCityTime(weather?.sys?.sunrise, weather?.timezone)}
+        />
+        <DetailCard
+          icon="wb_twilight"
+          label="Sunset"
+          value={formatCityTime(weather?.sys?.sunset, weather?.timezone)}
+        />
+        <DetailCard
+          icon="cloud"
+          label="Cloudiness"
+          value={weather?.clouds?.all != null ? `${weather.clouds.all}%` : "—"}
+        />
       </div>
     </div>
   );
