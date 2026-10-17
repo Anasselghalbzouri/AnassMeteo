@@ -25,13 +25,13 @@ function TopNav() {
           to="/"
           className="flex items-center gap-3 hover:opacity-80 transition-opacity"
         >
-          <h2 className="text-white text-xl font-bold tracking-tight">
+          <h2 className="text-slate-900 text-xl font-bold tracking-tight">
             SkyCode
           </h2>
         </Link>
         <Link
           to="/"
-          className="text-sm font-medium text-white/60 hover:text-white transition-colors"
+          className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors"
         >
           Home
         </Link>
@@ -42,7 +42,7 @@ function TopNav() {
           <button
             onClick={handleClick}
             aria-label="Search city"
-            className="material-symbols-outlined text-white/40 text-lg"
+            className="material-symbols-outlined text-slate-400 text-lg"
           >
             search
           </button>
@@ -56,7 +56,7 @@ function TopNav() {
                 handleClick();
               }
             }}
-            className="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-white/30 p-0"
+            className="bg-transparent border-none focus:ring-0 text-sm w-full text-slate-900 placeholder:text-slate-400 p-0"
             placeholder="Search cities..."
             type="text"
           />
@@ -68,7 +68,7 @@ function TopNav() {
               dispatch(logout());
               navigate("/login");
             }}
-            className="text-sm font-medium text-white/60 hover:text-white transition-colors"
+            className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors"
           >
             Logout
           </button>

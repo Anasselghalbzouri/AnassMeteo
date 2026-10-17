@@ -25,7 +25,7 @@ function RightSidebar() {
     <aside className="w-full lg:w-80 flex flex-col gap-6">
       <div className="glass flex-1 rounded-2xl p-6 flex flex-col border-white/5">
         <div className="flex items-center justify-between mb-8">
-          <h3 className="text-white font-semibold text-lg">Favorite Cities</h3>
+          <h3 className="text-slate-900 font-semibold text-lg">Favorite Cities</h3>
         </div>
 
         <div className="flex flex-col gap-4">
@@ -36,7 +36,7 @@ function RightSidebar() {
           <button
             onClick={handleAddCity}
             disabled={!currentCity || hasCity(favorites, currentCity)}
-            className="flex items-center justify-center gap-2 border-2 border-dashed border-white/10 rounded-xl p-6 text-white/40 hover:text-white hover:border-white/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center justify-center gap-2 border-2 border-dashed border-slate-300 rounded-xl p-6 text-slate-400 hover:text-slate-700 hover:border-slate-400 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <span className="material-symbols-outlined" aria-hidden="true">
               add

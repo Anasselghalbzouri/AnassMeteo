@@ -13,7 +13,7 @@ Application de météo moderne et élégante construite avec React, Redux et Tai
 - **Favoris** : Ajoutez ou retirez des villes favorites depuis la page d'accueil ou la page de détails (dédoublonnage insensible à la casse, persistance locale).
 - **Navigation Fluide** : Routage entre l'accueil, les détails des villes et une page 404.
 - **Gestion des Erreurs** : États de chargement, messages clairs (ville introuvable, erreur réseau) et garde-fou global (ErrorBoundary).
-- **Design Moderne** : Interface "Glassmorphism", animations et mise en page responsive mobile/desktop.
+- **Design Moderne** : Interface claire et épurée — fond dégradé doux (bleu/violet), cartes "glassmorphism" légères, animations et mise en page responsive mobile/desktop.
 
 ## 🛠️ Technologies Utilisées
 

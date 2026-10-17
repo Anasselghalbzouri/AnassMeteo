@@ -44,7 +44,7 @@ test("redirects to the login page when not authenticated", async () => {
   store.dispatch(logout());
   renderApp();
   expect(
-    await screen.findByRole("heading", { name: /login/i })
+    await screen.findByRole("button", { name: /sign in/i })
   ).toBeInTheDocument();
 });
 

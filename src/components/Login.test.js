@@ -26,7 +26,7 @@ test("shows an error for invalid credentials", async () => {
   fireEvent.change(screen.getByLabelText(/password/i), {
     target: { value: "wrong" },
   });
-  fireEvent.click(screen.getByRole("button", { name: /^login$/i }));
+  fireEvent.click(screen.getByRole("button", { name: /^sign in$/i }));
   expect(
     await screen.findByText(/invalid email or password/i, {}, { timeout: 3000 })
   ).toBeInTheDocument();
@@ -40,7 +40,7 @@ test("authenticates with the demo credentials", async () => {
   fireEvent.change(screen.getByLabelText(/password/i), {
     target: { value: "password" },
   });
-  fireEvent.click(screen.getByRole("button", { name: /^login$/i }));
+  fireEvent.click(screen.getByRole("button", { name: /^sign in$/i }));
   await waitFor(
     () => expect(store.getState().auth.isAuthenticated).toBe(true),
     { timeout: 3000 }

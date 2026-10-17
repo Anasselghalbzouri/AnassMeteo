@@ -4,21 +4,21 @@
 
 @layer components {
   .glass {
-    background: rgba(40, 46, 57, 0.4);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.66);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.12);
   }
-  .code-bg {
-    background-image: linear-gradient(
-        rgba(16, 22, 34, 0.8),
-        rgba(16, 22, 34, 0.8)
-      ),
-      url(https://lh3.googleusercontent.com/aida-public/AB6AXuAIqgR41x7elfs0bPReYknzkqSELOTsK4fDxSC0O3WN4DyD1PuTFjeJKPsWis1hSn62Iv5kWcwK6N8OJ3COilQzxoxgik06UoOTBbFaxPiUjk7D9k9LwNw1NwLzzMqieToLibs10Z2Ou3Nl1cJZzw7ff1ta35pzAIFVa32_rg98F6A_xTFInxco3HGzWViiQqS7v9ULGaid1u2tf19GqfIFuj-weQmmbIhHvprudrqQTE8iuA-BUBA6QqIybaQBSThwjDTzraurgNeQ);
-    background-size: cover;
-    background-position: center;
+  .app-bg {
+    background:
+      radial-gradient(1100px 550px at 88% -12%, rgba(147, 197, 253, 0.45), transparent 62%),
+      radial-gradient(900px 480px at -8% 108%, rgba(196, 181, 253, 0.35), transparent 60%),
+      radial-gradient(700px 380px at 45% 55%, rgba(224, 242, 254, 0.5), transparent 65%),
+      #f6f6f8;
   }
   .glow-blue {
-    filter: drop-shadow(0 0 8px rgba(19, 91, 236, 0.6));
+    filter: drop-shadow(0 0 8px rgba(19, 91, 236, 0.35));
   }
 }
 

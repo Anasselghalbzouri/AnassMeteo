@@ -6,7 +6,7 @@ function MapBackground() {
       <div className="w-full h-full glass rounded-full blur-[100px] bg-primary/20"></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <svg
-          className="text-white/10"
+          className="text-slate-900/10"
           fill="none"
           height="400"
           viewBox="0 0 400 400"

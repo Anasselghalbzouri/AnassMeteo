@@ -29,7 +29,7 @@ function CityDetails() {
         <div className="flex items-center justify-between mb-6 gap-4">
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-2 text-white/60 hover:text-white w-fit transition-colors"
+            className="flex items-center gap-2 text-slate-500 hover:text-slate-900 w-fit transition-colors"
           >
             <span className="material-symbols-outlined" aria-hidden="true">
               arrow_back
@@ -41,7 +41,7 @@ function CityDetails() {
               dispatch(isFavorite ? removeFavorite(cityName) : addFavorite(cityName))
             }
             aria-pressed={isFavorite}
-            className="glass rounded-xl px-4 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all"
+            className="glass rounded-xl px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-white/90 transition-all"
           >
             <span
               className="material-symbols-outlined text-lg align-middle mr-2"
@@ -53,13 +53,13 @@ function CityDetails() {
           </button>
         </div>
 
-        <h1 className="text-white tracking-light text-4xl md:text-[64px] font-bold leading-none mb-2">
+        <h1 className="text-slate-900 tracking-light text-4xl md:text-[64px] font-bold leading-none mb-2">
           {locationLabel}
           {countryCode ? `, ${countryCode.toUpperCase()}` : ""}
         </h1>
 
         <div className="flex items-baseline gap-4">
-          <h1 className="text-white tracking-tighter text-[76px] md:text-[120px] font-thin leading-none">
+          <h1 className="text-slate-900 tracking-tighter text-[76px] md:text-[120px] font-thin leading-none">
             {loading && temp == null
               ? "…"
               : temp != null
@@ -68,12 +68,12 @@ function CityDetails() {
           </h1>
           <div className="flex flex-col">
             {loading && !description && (
-              <span className="text-white/40 text-lg">Loading…</span>
+              <span className="text-slate-400 text-lg">Loading…</span>
             )}
-            <span className="text-white/60 text-xl capitalize">
+            <span className="text-slate-500 text-xl capitalize">
               {description || "—"}
             </span>
-            <span className="text-white/40 text-lg">
+            <span className="text-slate-400 text-lg">
               H:{tempMax != null ? Math.round(tempMax) : "—"}° L:
               {tempMin != null ? Math.round(tempMin) : "—"}°
             </span>
@@ -81,7 +81,7 @@ function CityDetails() {
         </div>
 
         {error && (
-          <p role="alert" className="mt-4 text-red-400 text-sm font-medium">
+          <p role="alert" className="mt-4 text-red-500 text-sm font-medium">
             {error}
           </p>
         )}

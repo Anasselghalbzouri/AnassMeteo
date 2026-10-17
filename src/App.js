@@ -13,7 +13,7 @@ import NotFound from "./components/NotFound";
 function App() {
   return (
     <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-      <div className="relative flex h-screen w-full flex-col overflow-y-auto overflow-x-hidden md:overflow-hidden bg-background-light dark:bg-background-dark font-display text-white">
+      <div className="relative flex h-screen w-full flex-col overflow-y-auto overflow-x-hidden md:overflow-hidden bg-background-light font-display text-slate-900">
         <BackgroundLayer />
         <ErrorBoundary>
           <Routes>

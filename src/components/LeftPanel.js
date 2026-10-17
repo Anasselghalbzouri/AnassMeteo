@@ -31,13 +31,13 @@ function LeftPanel() {
           </div>
         )}
 
-        <h1 className="text-white tracking-light text-4xl md:text-[64px] font-bold leading-none mb-2">
+        <h1 className="text-slate-900 tracking-light text-4xl md:text-[64px] font-bold leading-none mb-2">
           {locationLabel}
           {countryCode ? `, ${countryCode.toUpperCase()}` : ""}
         </h1>
 
         <div className="flex items-baseline gap-4">
-          <h1 className="text-white tracking-tighter text-[76px] md:text-[120px] font-thin leading-none">
+          <h1 className="text-slate-900 tracking-tighter text-[76px] md:text-[120px] font-thin leading-none">
             {loading && temp == null
               ? "…"
               : temp != null
@@ -46,12 +46,12 @@ function LeftPanel() {
           </h1>
           <div className="flex flex-col">
             {loading && !description && (
-              <span className="text-white/40 text-lg">Loading…</span>
+              <span className="text-slate-400 text-lg">Loading…</span>
             )}
-            <span className="text-white/60 text-xl capitalize">
+            <span className="text-slate-500 text-xl capitalize">
               {description || "—"}
             </span>
-            <span className="text-white/40 text-lg">
+            <span className="text-slate-400 text-lg">
               H:{tempMax != null ? Math.round(tempMax) : "—"}° L:
               {tempMin != null ? Math.round(tempMin) : "—"}°
             </span>
@@ -59,7 +59,7 @@ function LeftPanel() {
         </div>
 
         {error && (
-          <p role="alert" className="mt-4 text-red-400 text-sm font-medium">
+          <p role="alert" className="mt-4 text-red-500 text-sm font-medium">
             {error}
           </p>
         )}
